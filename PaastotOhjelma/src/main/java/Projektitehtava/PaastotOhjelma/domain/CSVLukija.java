@@ -14,19 +14,24 @@ public class CSVLukija {
 			
 			// Käydään läpi listan kaikki rivit
 			for (String rivi : rivit) {
-				
-				// Poistetaan lainausmerkit
-				rivi = rivi.replace("\"", "");
-				
-				// Korvataan asioiden sisällä olevat pilkut pisteellä
-				rivi = rivi.replace(", ", ".");
-				
-				// Erotellaan tiedot
-				String[] arvot = rivi.split(",");
-				
-				System.out.println(arvot[1]);
-			}
 
+					// Poistetaan lainausmerkit
+					rivi = rivi.replace("\"", "");
+					
+					// Korvataan asioiden sisällä olevat pilkut pisteellä
+					rivi = rivi.replace(", ", ".");
+					
+					// Erotellaan tiedot
+					String[] arvot = rivi.split(",");
+
+					String maanNimi = "Finland";
+					
+					// Tulostetaan halutun maan tiedot
+					if (arvot[0].equals(maanNimi)) {
+						System.out.println("Maa: " + arvot[0] + "\nMaakoodi: " + arvot[1] + "\nVäkiluku 1999: " + arvot[44] + "\nVäkiluku 2009: " + arvot[54]);
+					}
+			}
+			
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
