@@ -24,7 +24,7 @@ public class CSVLukija {
 					// Erotellaan tiedot
 					String[] arvot = rivi.split(",");
 
-					String maanNimi = "Finland";
+					String maanNimi = "Sweden";
 					
 					// Tulostetaan halutun maan tiedot
 					if (arvot[0].equals(maanNimi)) {
