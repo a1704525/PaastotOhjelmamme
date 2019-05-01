@@ -11,12 +11,12 @@
 	<div>
 		<h1>Maa</h1>
 		<div>
-			<tr th:each="maa : ${maat}">
-				<td th:text="${maa.nimi}"></td>
-			</tr>
-
+			<table>
+				<tr th:each="maa : ${maat}">
+					<td th:text="${maa.nimi}">Maa</td>
+				</tr>
+			</table>
 		</div>
 	</div>
-
 </body>
 </html>
