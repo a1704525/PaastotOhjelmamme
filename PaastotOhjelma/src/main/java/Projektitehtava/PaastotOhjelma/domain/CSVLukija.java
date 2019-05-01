@@ -2,8 +2,6 @@ package Projektitehtava.PaastotOhjelma.domain;
 
 import java.util.List;
 
-//import org.springframework.beans.factory.annotation.Autowired;
-
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -12,28 +10,15 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 import Projektitehtava.PaastotOhjelma.domain.MaaVakiluku;
-//import Projektitehtava.PaastotOhjelma.domain.MaaVakilukuRepository;
 
 public class CSVLukija {
 
-	//@Autowired
-	//private static MaaVakilukuRepository maavakilukurepository;
-	
-	public static void main(String[] args) {
+	public static List<MaaVakiluku> main(String[] args) {
 		 	
 		// Luodaan lista, johon luetaan kaikki csv-tiedoston rivit
 		List<MaaVakiluku> maidenVakiluvut = lueCsvTiedosto("data/API_SP.POP.TOTL_DS2_en_csv_v2_10576638.csv");
-			
-		System.out.println(maidenVakiluvut);
-		
-		// Käydään läpi listan maa-oliot
-		for (MaaVakiluku maa: maidenVakiluvut) {
-			
-			// Tallennetaan maa-olio repositoryyn
-			//maavakilukurepository.save(maa);
-			
-			System.out.println("Application main -metodi: " + maa);
-		}
+	
+		return maidenVakiluvut;
 		
 	}
 			
