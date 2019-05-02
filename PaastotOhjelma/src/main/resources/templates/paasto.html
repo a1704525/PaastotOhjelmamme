@@ -9,13 +9,12 @@
 <body>
 
 	<div>
-		<h1>Maa</h1>
+		<h1>Paasto</h1>
 		<div>
 			<table>
-					
-				<tr th:each="maa : ${maat}">
-					<td th:text="${maa.nimi}">Maa</td>
-
+				<tr th:each="paasto : ${paastot}">
+					<td th:text="${paasto.paastonimi}">Maa</td>
+					<td th:text="${paasto.vuosi2008}">Vuosi</td>				
 				</tr>
 			</table>
 		</div>

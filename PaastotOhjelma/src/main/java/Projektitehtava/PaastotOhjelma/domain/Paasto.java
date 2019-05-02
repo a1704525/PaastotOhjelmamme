@@ -1,18 +1,17 @@
 package Projektitehtava.PaastotOhjelma.domain;
 
 import javax.persistence.Entity;
-import javax.persistence.Id;
-
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
-public class MaaVakiluku {
+public class Paasto {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long id;
-	private String nimi;
+	private Long paastoid;
+	private String paastonimi;
 	private int vuosi1960;
 	private int vuosi1961; 
 	private int vuosi1962;
@@ -73,18 +72,18 @@ public class MaaVakiluku {
 	private int vuosi2017;
 	private int vuosi2018;
 	
-	public MaaVakiluku(){
+public Paasto(){
 		
 	}
 	
-	public MaaVakiluku(String nimi, int vuosi1960, int vuosi1961, int vuosi1962, 
+	public Paasto(String paastonimi, int vuosi1960, int vuosi1961, int vuosi1962, 
 	int vuosi1963, int vuosi1964, int vuosi1965, int vuosi1966, int vuosi1967, int vuosi1968, int vuosi1969, int vuosi1970, int vuosi1971, int vuosi1972, int vuosi1973, int vuosi1974, int vuosi1975,
 	 int vuosi1976, int vuosi1977, int vuosi1978, int vuosi1979, int vuosi1980, int vuosi1981, int vuosi1982, int vuosi1983, int vuosi1984, int vuosi1985, int vuosi1986, int vuosi1987, int vuosi1988,
 	 int vuosi1989, int vuosi1990, int vuosi1991, int vuosi1992, int vuosi1993, int vuosi1994, int vuosi1995, int vuosi1996, int vuosi1997, int vuosi1998, int vuosi1999, int vuosi2000, int vuosi2001,
 	 int vuosi2002, int vuosi2003, int vuosi2004, int vuosi2005, int vuosi2006, int vuosi2007, int vuosi2008, int vuosi2009, int vuosi2010, int vuosi2011, int vuosi2012, int vuosi2013, int vuosi2014,
 	 int vuosi2015, int vuosi2016, int vuosi2017, int vuosi2018) {
 		
-		this.nimi = nimi;
+		this.paastonimi = paastonimi;
 		this.vuosi1960 = vuosi1960;
 		this.vuosi1961 = vuosi1961; 
 		this.vuosi1962 = vuosi1962;
@@ -144,15 +143,30 @@ public class MaaVakiluku {
 		this.vuosi2016 = vuosi2016;
 		this.vuosi2017 = vuosi2017;
 		this.vuosi2018 = vuosi2018;
-
 }
-	
-	public Long getId() {
-		return id;
+
+	public Long getPaastoid() {
+		return paastoid;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setPaastoid(Long paastoid) {
+		this.paastoid = paastoid;
+	}
+
+	public String getPaastonimi() {
+		return paastonimi;
+	}
+
+	public void setPaastonimi(String paastonimi) {
+		this.paastonimi = paastonimi;
+	}
+
+	public int getVuosi1960() {
+		return vuosi1960;
+	}
+
+	public void setVuosi1960(int vuosi1960) {
+		this.vuosi1960 = vuosi1960;
 	}
 
 	public int getVuosi1961() {
@@ -619,43 +633,28 @@ public class MaaVakiluku {
 		this.vuosi2018 = vuosi2018;
 	}
 
-	public String getNimi() {
-		return nimi;
-	}
-
-	public int getVuosi1960() {
-		return vuosi1960;
-	}
-
-	public void setNimi(String nimi) {
-		this.nimi = nimi;
-	}
-
-	public void setVuosi1960(int vuosi1960) {
-		this.vuosi1960 = vuosi1960;
-	}
-
 	@Override
 	public String toString() {
-		return "MaaVakiluku [id=" + id + ", nimi=" + nimi + ", vuosi1960=" + vuosi1960 + ", vuosi1961=" + vuosi1961
-				+ ", vuosi1962=" + vuosi1962 + ", vuosi1963=" + vuosi1963 + ", vuosi1964=" + vuosi1964 + ", vuosi1965="
-				+ vuosi1965 + ", vuosi1966=" + vuosi1966 + ", vuosi1967=" + vuosi1967 + ", vuosi1968=" + vuosi1968
-				+ ", vuosi1969=" + vuosi1969 + ", vuosi1970=" + vuosi1970 + ", vuosi1971=" + vuosi1971 + ", vuosi1972="
-				+ vuosi1972 + ", vuosi1973=" + vuosi1973 + ", vuosi1974=" + vuosi1974 + ", vuosi1975=" + vuosi1975
-				+ ", vuosi1976=" + vuosi1976 + ", vuosi1977=" + vuosi1977 + ", vuosi1978=" + vuosi1978 + ", vuosi1979="
-				+ vuosi1979 + ", vuosi1980=" + vuosi1980 + ", vuosi1981=" + vuosi1981 + ", vuosi1982=" + vuosi1982
-				+ ", vuosi1983=" + vuosi1983 + ", vuosi1984=" + vuosi1984 + ", vuosi1985=" + vuosi1985 + ", vuosi1986="
-				+ vuosi1986 + ", vuosi1987=" + vuosi1987 + ", vuosi1988=" + vuosi1988 + ", vuosi1989=" + vuosi1989
-				+ ", vuosi1990=" + vuosi1990 + ", vuosi1991=" + vuosi1991 + ", vuosi1992=" + vuosi1992 + ", vuosi1993="
-				+ vuosi1993 + ", vuosi1994=" + vuosi1994 + ", vuosi1995=" + vuosi1995 + ", vuosi1996=" + vuosi1996
-				+ ", vuosi1997=" + vuosi1997 + ", vuosi1998=" + vuosi1998 + ", vuosi1999=" + vuosi1999 + ", vuosi2000="
-				+ vuosi2000 + ", vuosi2001=" + vuosi2001 + ", vuosi2002=" + vuosi2002 + ", vuosi2003=" + vuosi2003
-				+ ", vuosi2004=" + vuosi2004 + ", vuosi2005=" + vuosi2005 + ", vuosi2006=" + vuosi2006 + ", vuosi2007="
-				+ vuosi2007 + ", vuosi2008=" + vuosi2008 + ", vuosi2009=" + vuosi2009 + ", vuosi2010=" + vuosi2010
-				+ ", vuosi2011=" + vuosi2011 + ", vuosi2012=" + vuosi2012 + ", vuosi2013=" + vuosi2013 + ", vuosi2014="
-				+ vuosi2014 + ", vuosi2015=" + vuosi2015 + ", vuosi2016=" + vuosi2016 + ", vuosi2017=" + vuosi2017
-				+ ", vuosi2018=" + vuosi2018 + "]";
+		return "Paasto [paastoid=" + paastoid + ", paastonimi=" + paastonimi + ", vuosi1960=" + vuosi1960
+				+ ", vuosi1961=" + vuosi1961 + ", vuosi1962=" + vuosi1962 + ", vuosi1963=" + vuosi1963 + ", vuosi1964="
+				+ vuosi1964 + ", vuosi1965=" + vuosi1965 + ", vuosi1966=" + vuosi1966 + ", vuosi1967=" + vuosi1967
+				+ ", vuosi1968=" + vuosi1968 + ", vuosi1969=" + vuosi1969 + ", vuosi1970=" + vuosi1970 + ", vuosi1971="
+				+ vuosi1971 + ", vuosi1972=" + vuosi1972 + ", vuosi1973=" + vuosi1973 + ", vuosi1974=" + vuosi1974
+				+ ", vuosi1975=" + vuosi1975 + ", vuosi1976=" + vuosi1976 + ", vuosi1977=" + vuosi1977 + ", vuosi1978="
+				+ vuosi1978 + ", vuosi1979=" + vuosi1979 + ", vuosi1980=" + vuosi1980 + ", vuosi1981=" + vuosi1981
+				+ ", vuosi1982=" + vuosi1982 + ", vuosi1983=" + vuosi1983 + ", vuosi1984=" + vuosi1984 + ", vuosi1985="
+				+ vuosi1985 + ", vuosi1986=" + vuosi1986 + ", vuosi1987=" + vuosi1987 + ", vuosi1988=" + vuosi1988
+				+ ", vuosi1989=" + vuosi1989 + ", vuosi1990=" + vuosi1990 + ", vuosi1991=" + vuosi1991 + ", vuosi1992="
+				+ vuosi1992 + ", vuosi1993=" + vuosi1993 + ", vuosi1994=" + vuosi1994 + ", vuosi1995=" + vuosi1995
+				+ ", vuosi1996=" + vuosi1996 + ", vuosi1997=" + vuosi1997 + ", vuosi1998=" + vuosi1998 + ", vuosi1999="
+				+ vuosi1999 + ", vuosi2000=" + vuosi2000 + ", vuosi2001=" + vuosi2001 + ", vuosi2002=" + vuosi2002
+				+ ", vuosi2003=" + vuosi2003 + ", vuosi2004=" + vuosi2004 + ", vuosi2005=" + vuosi2005 + ", vuosi2006="
+				+ vuosi2006 + ", vuosi2007=" + vuosi2007 + ", vuosi2008=" + vuosi2008 + ", vuosi2009=" + vuosi2009
+				+ ", vuosi2010=" + vuosi2010 + ", vuosi2011=" + vuosi2011 + ", vuosi2012=" + vuosi2012 + ", vuosi2013="
+				+ vuosi2013 + ", vuosi2014=" + vuosi2014 + ", vuosi2015=" + vuosi2015 + ", vuosi2016=" + vuosi2016
+				+ ", vuosi2017=" + vuosi2017 + ", vuosi2018=" + vuosi2018 + "]";
 	}
-
 	
+	
+
 }

@@ -21,5 +21,12 @@ public class MaaController {
 		return "index";
 	} 
 	 
+	@RequestMapping(value = "/maat")
+	public String maat(Model model) {
+		model.addAttribute("maat", maaVakilukuRepository.findAll());
+		//System.out.println("controller: " + maaVakilukuRepository.findAll());
+		
+		return "maat";
+	}
 }
  

@@ -1,0 +1,14 @@
+package Projektitehtava.PaastotOhjelma.domain;
+
+import java.util.List;
+
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+
+@RepositoryRestResource
+public interface PaastoRepository extends CrudRepository<Paasto, Long> {
+	
+	List<Paasto> findByPaastonimi(@Param("paasto")String paastonimi);
+
+}

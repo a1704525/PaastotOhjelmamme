@@ -11,6 +11,9 @@ import java.util.List;
 import Projektitehtava.PaastotOhjelma.domain.CSVLukija;
 import Projektitehtava.PaastotOhjelma.domain.MaaVakiluku;
 import Projektitehtava.PaastotOhjelma.domain.MaaVakilukuRepository;
+import Projektitehtava.PaastotOhjelma.domain.Paasto;
+import Projektitehtava.PaastotOhjelma.domain.PaastoCSVLukija;
+import Projektitehtava.PaastotOhjelma.domain.PaastoRepository;
 
 
 
@@ -35,6 +38,24 @@ public class PaastotOhjelmaApplication {
 	    		
 	    		log.info("Tallennetaan maiden nimiä ja väkilukuja");
 	    		maavakilukurepository.save(maa);
+	
+	    
+	    	}	
+		};
+	}
+	
+	@Bean 
+	public CommandLineRunner maidenNimetJaPaastot(PaastoRepository paastorepository) {
+		return (args) -> {
+			
+			// Käynnistetään CSVLukija
+	    	List<Paasto> paastot = PaastoCSVLukija.main(args);
+	   
+	    	// Käydään läpi listan maa-oliot
+	    	for (Paasto paasto: paastot) {
+	    		
+	    		log.info("Tallennetaan maiden nimiä ja päästöjä");
+	    		paastorepository.save(paasto);
 	    
 	    	}	
 		};
