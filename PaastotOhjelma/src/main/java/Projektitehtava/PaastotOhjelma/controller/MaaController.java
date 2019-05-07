@@ -16,8 +16,7 @@ public class MaaController {
 	@RequestMapping(value = "/index")
 	public String index(Model model) {
 		model.addAttribute("maat", maaVakilukuRepository.findAll());
-		//System.out.println("controller: " + maaVakilukuRepository.findAll());
-		
+
 		return "index";
 	} 
 	 

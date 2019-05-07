@@ -11,14 +11,78 @@
 	<div>
 		<h1>Maa</h1>
 		<div>
-			<table>
-					
-				<tr th:each="maa : ${maat}">
-					<td th:text="${maa.nimi}">Maa</td>
-
-				</tr>
-			</table>
+		  	<label for="maalista"><b>Valitse maa:</b></label><br/>
+			<select id="maalista">
+				<option th:each="maa: ${maat}" th:value="${maa.id}" th:text="${maa.nimi}"></option>
+			</select>
 		</div>
+		<br><br>
+		<div>
+		  	<label for="vuosilista"><b>Valitse vuosi:</b></label><br/>
+			<select id="vuosilista">
+				<option th:text="vuosi"></option>
+				<option th:text="2018"></option>
+				<option th:text="2017"></option>
+				<option th:text="2016"></option>
+				<option th:text="2015"></option>
+				<option th:text="2014"></option>
+				<option th:text="2013"></option>
+				<option th:text="2012"></option>
+				<option th:text="2011"></option>
+				<option th:text="2010"></option>
+				<option th:text="2009"></option>
+				<option th:text="2008"></option>
+				<option th:text="2007"></option>
+				<option th:text="2006"></option>
+				<option th:text="2005"></option>
+				<option th:text="2004"></option>
+				<option th:text="2003"></option>
+				<option th:text="2002"></option>
+				<option th:text="2001"></option>
+				<option th:text="2000"></option>
+				<option th:text="1999"></option>
+				<option th:text="1998"></option>
+				<option th:text="1997"></option>
+				<option th:text="1996"></option>
+				<option th:text="1995"></option>
+				<option th:text="1994"></option>
+				<option th:text="1993"></option>
+				<option th:text="1992"></option>
+				<option th:text="1991"></option>
+				<option th:text="1990"></option>
+				<option th:text="1989"></option>
+				<option th:text="1988"></option>
+				<option th:text="1987"></option>
+				<option th:text="1986"></option>
+				<option th:text="1985"></option>
+				<option th:text="1984"></option>
+				<option th:text="1983"></option>
+				<option th:text="1982"></option>
+				<option th:text="1981"></option>
+				<option th:text="1980"></option>
+				<option th:text="1979"></option>
+				<option th:text="1978"></option>
+				<option th:text="1977"></option>
+				<option th:text="1976"></option>
+				<option th:text="1975"></option>
+				<option th:text="1974"></option>
+				<option th:text="1973"></option>
+				<option th:text="1972"></option>
+				<option th:text="1971"></option>
+				<option th:text="1970"></option>
+				<option th:text="1969"></option>
+				<option th:text="1968"></option>
+				<option th:text="1967"></option>
+				<option th:text="1966"></option>
+				<option th:text="1965"></option>
+				<option th:text="1964"></option>
+				<option th:text="1963"></option>
+				<option th:text="1962"></option>
+				<option th:text="1961"></option>
+				<option th:text="1960"></option>
+			</select>
+		</div>
+		
 	</div>
 </body>
 </html>
