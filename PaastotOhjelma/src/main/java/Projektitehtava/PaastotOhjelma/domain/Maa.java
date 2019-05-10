@@ -75,7 +75,7 @@ public class Maa {
 	
 	// Laskee päästöjen määrän per asukas
 	public int getPaastotPerAsukas(int paastot, int vakiluku) {
-		return paastot / vakiluku;
+		return this.paastot / this.vakiluku;
 	}
 	 
 	@Override
