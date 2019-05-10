@@ -38,6 +38,8 @@ public class CSVLukija {
 				// Korvataan asioiden sisällä olevat pilkut välilyönnillä
 				rivi = rivi.replace(", ", " ");
 				
+				rivi = rivi.replace(",,", ",0,");
+				
 				// Erotellaan tiedot
 				String[] arvot = rivi.split(",");
 				
@@ -102,7 +104,7 @@ public class CSVLukija {
 				int vuosi2015 = Integer.parseInt(arvot[59]);
 				int vuosi2016 = Integer.parseInt(arvot[60]);
 				int vuosi2017 = Integer.parseInt(arvot[61]);
-				/*int vuosi2018 = Integer.parseInt(arvot[62]);*/
+				int vuosi2018 = Integer.parseInt(arvot[62]);
 				
 				uusiMaa.setNimi(nimi);
 				uusiMaa.setVuosi1960(vuosi1960);
@@ -135,7 +137,7 @@ public class CSVLukija {
 				uusiMaa.setVuosi1987(vuosi1987);
 				uusiMaa.setVuosi1988(vuosi1988);
 				uusiMaa.setVuosi1989(vuosi1989);
-				uusiMaa.setVuosi1980(vuosi1990);
+				uusiMaa.setVuosi1990(vuosi1990);
 				uusiMaa.setVuosi1991(vuosi1991);
 				uusiMaa.setVuosi1992(vuosi1992);
 				uusiMaa.setVuosi1993(vuosi1993);
@@ -163,7 +165,7 @@ public class CSVLukija {
 				uusiMaa.setVuosi2015(vuosi2015);
 				uusiMaa.setVuosi2016(vuosi2016);
 				uusiMaa.setVuosi2017(vuosi2017);
-				/*uusiMaa.setVuosi2018(vuosi2018);*/
+				uusiMaa.setVuosi2018(vuosi2018);
 				
 				
 				System.out.println("Uuden maan nimi: " + uusiMaa.getNimi());
