@@ -14,22 +14,22 @@ public class Maa {
 	
 	private String nimi;
 	private int vuosi;
-	private int paastot;
+	private int paasto;
 	private int vakiluku;
 	
 	public Maa() {
 		super();
 		this.nimi = null;
 		this.vuosi = 0;
-		this.paastot = 0;
+		this.paasto = 0;
 		this.vakiluku = 0;
 	}
 	
-	public Maa(String nimi, int vuosi, int paastot, int vakiluku) {
+	public Maa(String nimi, int vuosi, int paasto, int vakiluku) {
 		super();
 		this.nimi = nimi;
 		this.vuosi = vuosi;
-		this.paastot = paastot;
+		this.paasto = paasto;
 		this.vakiluku = vakiluku;
 	}
 
@@ -45,8 +45,8 @@ public class Maa {
 		return vuosi;
 	}
 
-	public int getPaastot() {
-		return paastot;
+	public int getPaasto() {
+		return paasto;
 	}
 
 	public int getVakiluku() {
@@ -65,8 +65,8 @@ public class Maa {
 		this.vuosi = vuosi;
 	}
 
-	public void setPaastot(int paastot) {
-		this.paastot = paastot;
+	public void setPaasto(int paasto) {
+		this.paasto = paasto;
 	}
 
 	public void setVakiluku(int vakiluku) {
@@ -74,13 +74,13 @@ public class Maa {
 	}
 	
 	// Laskee päästöjen määrän per asukas
-	public int getPaastotPerAsukas(int paastot, int vakiluku) {
-		return this.paastot / this.vakiluku;
+	public int getPaastoPerAsukas(int paasto, int vakiluku) {
+		return this.paasto / this.vakiluku;
 	}
 	 
 	@Override
 	public String toString() {
-		return "Maa [id=" + id + ", nimi=" + nimi + ", vuosi=" + vuosi + ", paastot=" + paastot + ", vakiluku="
+		return "Maa [id=" + id + ", nimi=" + nimi + ", vuosi=" + vuosi + ", paasto=" + paasto + ", vakiluku="
 				+ vakiluku + "]";
 	}
 }
