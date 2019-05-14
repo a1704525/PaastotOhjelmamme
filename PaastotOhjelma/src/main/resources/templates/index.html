@@ -14,7 +14,7 @@
 			<div>
 		  		<label><b>Valitse maa:</b></label><br/>
 				<select id="maalista" th:field="*{nimi}">
-					<option th:each="maa: ${maat}" th:value="${maa.nimi}" th:text="${maa.nimi}"></option>
+					<option th:each="maa: ${maidenNimet}" th:value="${maa.nimi}" th:text="${maa.nimi}"></option>
 				</select>
 			</div>
 			<br><br>
@@ -85,8 +85,64 @@
 			</div>
 			<input type="submit" value="Hae tiedot"></input>
 		</form>
+		<!--  
+		<div>
+			<table id="maan-tiedot">
+				<tr th:each = "maa : ${maat}">
+					<td th:text="${maa.nimi}">Maan nimi</td>
+					<td th:text="${maa.vuosi}">Vuosi</td>
+					<td th:text="${maa.paasto}">Päästö</td>
+					<td th:text="${maa.vakiluku}">Väkiluku</td>
+					<td th:text="${maa.paastoPerAsukas}">Päästö per asukas</td>
+				</tr>
+			</table>
+		</div>
+		-->
 		
-		
-	</div>
+		<table>
+			<tr th:each = "maa : ${maat}">
+				<td th:object = "${maa}">
+					<div id="palsta">
+						<table>
+							<tr>
+								<td th:text="${maa.nimi}"><b>Maa</b></td>
+							</tr>
+						</table>
+					</div>
+					<div id="palsta">
+						<table>
+							<tr>
+								<td><p>Vuosi:<b></p></td>
+								<td th:text="${maa.vuosi}">Vuosi</td>
+							</tr>
+						</table>
+					</div>
+					<div id="palsta">
+						<table>
+							<tr>
+								<td><p>Väkiluku:<b></p></td>
+								<td th:text="${maa.vakiluku} + ' asukasta'">Väkiluku</td>
+							</tr>
+						</table>
+					</div>
+					<div id="palsta">
+						<table>
+							<tr>
+								<td><p>Päästö:<b></p></td>
+								<td th:text="${maa.paasto} + ' yksikköä'">Päästö</td>
+							</tr>
+						</table>
+					</div>
+					<div id="palsta">
+						<table>
+							<tr>
+								<td><p>Yhden asukkaan päästö:<b></p></td>
+								<td th:text="${maa.paastoPerAsukas} + ' yksikköä'">Päästö per asukas</td>
+							</tr>
+						</table>
+					</div>
+				</td>
+			</tr>
+		</table>
 </body>
 </html>

@@ -39,15 +39,16 @@ public class MaaController {
 	
 	@RequestMapping(value = "/index")
 	public String index(Model model) {
+		model.addAttribute("maat", maaRepository.findAll());
 		model.addAttribute("maa", new Maa());
-		model.addAttribute("maat", maaVakilukuRepository.findAll());
-				
+		model.addAttribute("maidenNimet", maaVakilukuRepository.findAll());
+		
 		return "index";
 	} 
 	 
 	@PostMapping("/lisaamaa")
-	public String lisaaMaa(@Valid Maa maa, BindingResult bindresult, Model model) { 
-		maaRepository.save(maa);
+	public String lisaaMaa(@Valid Maa maa, Model model) { 
+		//maaRepository.save(maa);
 		
 		// Oliot, joilla luetaan listojen olioita
 		MaaVakiluku vakiluku = new MaaVakiluku();
@@ -256,6 +257,7 @@ public class MaaController {
 			maa.setPaasto(maanpaasto.getVuosi2018());
 		} 
 		 
+		maaRepository.save(maa);
 		
 		// Päästö per asukas
 		double paastoAsukas = maa.getPaastoPerAsukas();
@@ -264,6 +266,8 @@ public class MaaController {
 		
 		System.out.println("Maa-olioon tallennettu nimi " + maa.getNimi() + ", vuosi " + maa.getVuosi() + ", väkiluku " + maa.getVakiluku() + ", päästö " + maa.getPaasto() );
 		System.out.println("Päästöt per asukas: " + def.format(paastoAsukas));
+		System.out.println("MaaRepositoryn sisältö: " + maaRepository.findAll());
+		
 		
 		return "redirect:index";	
 	}

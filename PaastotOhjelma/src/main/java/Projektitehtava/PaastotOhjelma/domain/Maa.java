@@ -16,6 +16,7 @@ public class Maa {
 	private int vuosi;
 	private int paasto;
 	private int vakiluku;
+	private double paastoPerAsukas;
 	
 	public Maa() {
 		super();
@@ -23,6 +24,7 @@ public class Maa {
 		this.vuosi = 0;
 		this.paasto = 0;
 		this.vakiluku = 0;
+		this.paastoPerAsukas = 0.0;
 	}
 	
 	public Maa(String nimi, int vuosi, int paasto, int vakiluku) {
@@ -84,6 +86,6 @@ public class Maa {
 	@Override
 	public String toString() {
 		return "Maa [id=" + id + ", nimi=" + nimi + ", vuosi=" + vuosi + ", paasto=" + paasto + ", vakiluku="
-				+ vakiluku + "]";
+				+ vakiluku + ", paastoPerAsukas=" + paastoPerAsukas + "]";
 	}
 }
