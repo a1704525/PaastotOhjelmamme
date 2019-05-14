@@ -1,27 +1,27 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Maat</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta name='viewport' content='width=device-width, initial-scale=1'>
-
+	<title>Maat</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
+	<link type="text/css" rel="stylesheet" href="css/tyyli.css" th:href="@{css/tyyli.css}" />
 </head>
 <body>
 
-	<div>
-		<h1>Maa</h1>
+	<div id="tausta">
+		<h1>Maiden päästöt</h1>
 		<form th:object="${maa}" th:action="@{/lisaamaa}" action="#" method="post">
 			<div>
-		  		<label><b>Valitse maa:</b></label><br/>
-				<select id="maalista" th:field="*{nimi}">
+		  		<h4>Valitse maa:</h4><br/>
+				<select id="lista" th:field="*{nimi}">
 					<option th:each="maa: ${maidenNimet}" th:value="${maa.nimi}" th:text="${maa.nimi}"></option>
 				</select>
 			</div>
 			<br><br>
 		
 			<div>
-		  		<label><b>Valitse vuosi:</b></label><br/>
-				<select id="vuosilista" th:field="*{vuosi}">
+		  		<h4>Valitse vuosi:</h4><br/>
+				<select id="lista" th:field="*{vuosi}">
 					<option th:value="2018" th:text="2018"></option>
 					<option th:value="2017" th:text="2017"></option>
 					<option th:value="2016" th:text="2016"></option>
@@ -83,7 +83,7 @@
 					<option th:value="1960" th:text="1960"></option>
 				</select>
 			</div>
-			<input type="submit" value="Hae tiedot"></input>
+			<input id="painike" type="submit" value="Hae tiedot"></input>
 		</form>
 		<!--  
 		<div>
@@ -99,50 +99,53 @@
 		</div>
 		-->
 		
-		<table>
-			<tr th:each = "maa : ${maat}">
-				<td th:object = "${maa}">
-					<div id="palsta">
-						<table>
-							<tr>
-								<td th:text="${maa.nimi}"><b>Maa</b></td>
-							</tr>
-						</table>
-					</div>
-					<div id="palsta">
-						<table>
-							<tr>
-								<td><p>Vuosi:<b></p></td>
-								<td th:text="${maa.vuosi}">Vuosi</td>
-							</tr>
-						</table>
-					</div>
-					<div id="palsta">
-						<table>
-							<tr>
-								<td><p>Väkiluku:<b></p></td>
-								<td th:text="${maa.vakiluku} + ' asukasta'">Väkiluku</td>
-							</tr>
-						</table>
-					</div>
-					<div id="palsta">
-						<table>
-							<tr>
-								<td><p>Päästö:<b></p></td>
-								<td th:text="${maa.paasto} + ' yksikköä'">Päästö</td>
-							</tr>
-						</table>
-					</div>
-					<div id="palsta">
-						<table>
-							<tr>
-								<td><p>Yhden asukkaan päästö:<b></p></td>
-								<td th:text="${maa.paastoPerAsukas} + ' yksikköä'">Päästö per asukas</td>
-							</tr>
-						</table>
-					</div>
-				</td>
-			</tr>
-		</table>
+		<div>
+			<table id="maiden-tiedot">
+				<tr th:each = "maa : ${maat}" id="maan-tiedot">
+					<td th:object = "${maa}">
+						<div id="palsta">
+							<table>
+								<tr>
+									<td th:text="${maa.nimi}"><h1>Maa</h1></td>
+								</tr>
+							</table>
+						</div>
+						<div id="palsta">
+							<table>
+								<tr>
+									<td><p>Vuosi:<b></p></td>
+									<td th:text="${maa.vuosi}">Vuosi</td>
+								</tr>
+							</table>
+						</div>
+						<div id="palsta">
+							<table>
+								<tr>
+									<td><p>Väkiluku:<b></p></td>
+									<td th:text="${maa.vakiluku} + ' asukasta'">Väkiluku</td>
+								</tr>
+							</table>
+						</div>
+						<div id="palsta">
+							<table>
+								<tr>
+									<td><p>Päästö:<b></p></td>
+									<td th:text="${maa.paasto} + ' yksikköä'">Päästö</td>
+								</tr>
+							</table>
+						</div>
+						<div id="palsta">
+							<table>
+								<tr>
+									<td><p>Yhden asukkaan päästö:<b></p></td>
+									<td th:text="${maa.paastoPerAsukas} + ' yksikköä'">Päästö per asukas</td>
+								</tr>
+							</table>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
 </body>
 </html>

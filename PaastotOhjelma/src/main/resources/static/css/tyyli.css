@@ -1,0 +1,63 @@
+body {
+	background-color: #515150;
+	text-align: center;
+	margin: auto;
+	font-family: 'Arial';
+	margin-top: 25px;
+}
+
+#tausta {
+	background-color: #eaeaea;
+	width: 80%;
+	margin: auto;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+#lista {
+	width: 250px;
+	height: 25px;
+}
+
+#painike {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	background-color: #f771e9;
+	width: 100px;
+	height: 40px;
+	font-weight: bold;
+	font-size: 16px;
+}
+
+#maiden-tiedot {
+	width: 80%;
+	margin: auto;
+	margin-bottom: 20px;
+	font-size: 14px;
+	text-align: center;
+}
+
+#maan-tiedot {
+	background-color: white;
+	margin-top: 15px;
+	width: 100%;
+}
+
+#palsta {
+	width: 100%;
+}
+
+h1 {
+	color: #515150;
+}
+
+h4 {
+	padding-bottom: 0px;
+	margin-bottom: 0px;
+}
+
+p {
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
