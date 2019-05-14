@@ -29,10 +29,11 @@ public class MaaController {
 	private PaastoRepository paastoRepository;
 	
 	
+	/* ei toimi
 	@RequestMapping("/")
 	public String avaaIndexSivu() {
 		return "index";
-	}
+	}*/
 	
 	@RequestMapping(value = "/index")
 	public String index(Model model) {
@@ -46,18 +47,18 @@ public class MaaController {
 	public String lisaaMaa(@Valid Maa maa, BindingResult bindresult, Model model) { 
 		maaRepository.save(maa);
 		
-		// Olio, jolla luetaan listan olioita
+		// Oliot, joilla luetaan listojen olioita
 		MaaVakiluku vakiluku = new MaaVakiluku();
 		Paasto paasto = new Paasto();
 		
 		List<MaaVakiluku> vakiluvut = (List<MaaVakiluku>) maaVakilukuRepository.findAll();
 		List<Paasto> paastot = (List<Paasto>) paastoRepository.findAll();
 		
-		// Olio, jolla poimitaan halutun maan tiedot
+		// Oliot, joilla poimitaan halutun maan tietoja
 		MaaVakiluku maanvakiluku = new MaaVakiluku();
 		Paasto maanpaasto = new Paasto();
 		
-		// Käydään lista läpi
+		// Käydään läpi vakiluku-lista
 		for (int i = 0; i < vakiluvut.size(); i++ ) {
 			vakiluku = vakiluvut.get(i);
 			if (maa.getNimi().equals(vakiluku.getNimi())) {
@@ -65,9 +66,10 @@ public class MaaController {
 			} 
 		}
 		
+		// Käydään läpi paasto-lista
 		for (int i = 0; i < paastot.size(); i++ ) {
 			paasto = paastot.get(i);
-			if (paasto.getPaastonimi().equals(paasto.getPaastonimi())) {
+			if (maa.getNimi().equals(paasto.getPaastonimi())) {
 				maanpaasto = paastot.get(i);
 			} 
 		}
