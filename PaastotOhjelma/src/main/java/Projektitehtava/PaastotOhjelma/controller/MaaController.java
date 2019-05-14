@@ -1,6 +1,8 @@
 package Projektitehtava.PaastotOhjelma.controller;
 
 import javax.validation.Valid;
+
+import java.text.DecimalFormat;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -253,9 +255,15 @@ public class MaaController {
 			maa.setVakiluku(maanvakiluku.getVuosi2018());
 			maa.setPaasto(maanpaasto.getVuosi2018());
 		} 
-		  
-	
-		System.out.println("Maa-olioon tallennettu nimi " + maa.getNimi() + ", vuosi " + maa.getVuosi() + ", väkiluku " + maa.getVakiluku() + " ja päästö " + maa.getPaasto() );
+		 
+		
+		// Päästö per asukas
+		double paastoAsukas = maa.getPaastoPerAsukas();
+		
+		DecimalFormat def = new DecimalFormat("###0.0000000");
+		
+		System.out.println("Maa-olioon tallennettu nimi " + maa.getNimi() + ", vuosi " + maa.getVuosi() + ", väkiluku " + maa.getVakiluku() + ", päästö " + maa.getPaasto() );
+		System.out.println("Päästöt per asukas: " + def.format(paastoAsukas));
 		
 		return "redirect:index";	
 	}

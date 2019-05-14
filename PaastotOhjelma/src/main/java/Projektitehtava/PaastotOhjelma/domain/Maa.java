@@ -74,9 +74,12 @@ public class Maa {
 	}
 	
 	// Laskee päästöjen määrän per asukas
-	public int getPaastoPerAsukas(int paasto, int vakiluku) {
-		return this.paasto / this.vakiluku;
+	public double getPaastoPerAsukas() {
+		double paasto = (double) this.paasto / this.vakiluku;
+		
+		return paasto;
 	}
+	
 	 
 	@Override
 	public String toString() {
