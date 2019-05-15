@@ -2,12 +2,8 @@ package Projektitehtava.PaastotOhjelma.domain;
 
 import java.util.List;
 
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 import Projektitehtava.PaastotOhjelma.domain.MaaVakiluku;
