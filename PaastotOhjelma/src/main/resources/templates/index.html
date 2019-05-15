@@ -14,7 +14,7 @@
 			<div>
 		  		<h4>Valitse maa:</h4><br/>
 				<select id="lista" th:field="*{nimi}">
-					<option th:each="maa: ${maidenNimet}" th:value="${maa.nimi}" th:text="${maa.nimi}"></option>
+					<option th:each="maannimi: ${maidenNimet}" th:value="${maannimi.nimi}" th:text="${maannimi.nimi}"></option>
 				</select>
 			</div>
 			<br><br>
@@ -85,62 +85,49 @@
 			</div>
 			<input id="painike" type="submit" value="Hae tiedot"></input>
 		</form>
-		<!--  
-		<div>
-			<table id="maan-tiedot">
-				<tr th:each = "maa : ${maat}">
-					<td th:text="${maa.nimi}">Maan nimi</td>
-					<td th:text="${maa.vuosi}">Vuosi</td>
-					<td th:text="${maa.paasto}">Päästö</td>
-					<td th:text="${maa.vakiluku}">Väkiluku</td>
-					<td th:text="${maa.paastoPerAsukas}">Päästö per asukas</td>
-				</tr>
-			</table>
-		</div>
-		-->
 		
 		<div>
 			<table id="maiden-tiedot">
-				<tr th:each = "maa : ${maat}" id="maan-tiedot">
-					<td th:object = "${maa}">
-						<div id="palsta">
-							<table>
+				<tr th:each = "maa : ${maat}">
+					<td th:object = "${maa}" id="maan-tiedot">
+						<div  id="ylapalsta">
+							<div id="poistapainike">
+								<p id="poista">Poista</p>
+							</div>
+						</div>
+						
+						<div>
+							<table id="taulukko">
 								<tr>
-									<td th:text="${maa.nimi}"><h1>Maa</h1></td>
+									<td id="solu"></td>
+									<td id="solu"><div><h2 th:text="${maa.nimi}">Maan nimi</h2></div></td>
+									<td id="solu"><div><h2 th:text="${maa.vuosi}">Vuosi</h2></div></td>
 								</tr>
 							</table>
 						</div>
-						<div id="palsta">
-							<table>
+						
+						<div>
+							<table id="taulukko">
 								<tr>
-									<td><p>Vuosi:<b></p></td>
-									<td th:text="${maa.vuosi}">Vuosi</td>
+									<td id="solu"><h3>Väkiluku:</h3></td>
+									<td id="solu" th:text="${#numbers.formatDecimal(maa.vakiluku, 0, 'WHITESPACE', 0, 'COMMA')} + ' asukasta'">Väkiluku</td>
+									<td id="solu"></td>
 								</tr>
 							</table>
 						</div>
-						<div id="palsta">
+						<div>
 							<table>
 								<tr>
-									<td><p>Väkiluku:<b></p></td>
-									<td th:text="${maa.vakiluku} + ' asukasta'">Väkiluku</td>
+									<td id="solu"><h3>CO2-päästöt:</h3></td>
+									<td id="solu"><p><b>Koko maa:</b></p></td>
+									<td id="solu" th:text="${#numbers.formatDecimal(maa.paasto, 0, 'WHITESPACE', 0, 'COMMA')} + ' tuhatta tonnia'">Päästö</td>
 								</tr>
-							</table>
-						</div>
-						<div id="palsta">
-							<table>
 								<tr>
-									<td><p>Päästö:<b></p></td>
-									<td th:text="${maa.paasto} + ' yksikköä'">Päästö</td>
+									<td id="solu"></td>
+									<td id="solu"><p><b>Yksi asukas:</b></p></td>
+									<td id="solu" th:text="${#numbers.formatDecimal(maa.paastoPerAsukas, 1,2)} + ' tonnia'">Päästö per asukas</td>
 								</tr>
-							</table>
-						</div>
-						<div id="palsta">
-							<table>
-								<tr>
-									<td><p>Yhden asukkaan päästö:<b></p></td>
-									<td th:text="${maa.paastoPerAsukas} + ' yksikköä'">Päästö per asukas</td>
-								</tr>
-							</table>
+							</table>	
 						</div>
 					</td>
 				</tr>
