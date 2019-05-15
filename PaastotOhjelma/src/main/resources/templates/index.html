@@ -89,7 +89,7 @@
 		<div>
 			<table id="maiden-tiedot">
 				<tr th:each = "maa : ${maat}">
-					<td th:object = "${maa}" id="maan-tiedot">
+					<td id="maan-tiedot">
 						<div  id="ylapalsta">
 							<div id="poistapainike">
 								<a th:href="@{/poista/{id}(id=${maa.id})}" id="poista">Poista</a>

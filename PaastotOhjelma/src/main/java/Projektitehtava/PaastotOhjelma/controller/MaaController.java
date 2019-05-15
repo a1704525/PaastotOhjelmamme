@@ -3,6 +3,8 @@ package Projektitehtava.PaastotOhjelma.controller;
 import javax.validation.Valid;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -40,7 +42,12 @@ public class MaaController {
 	
 	@RequestMapping(value = "/index")
 	public String index(Model model) {
-		model.addAttribute("maat", maaRepository.findAll());
+		
+		List<Maa> maalista = new ArrayList<Maa>();
+		maalista = (List<Maa>) maaRepository.findAll();
+		Collections.reverse(maalista);
+
+		model.addAttribute("maat", maalista);
 		model.addAttribute("maa", new Maa());
 		model.addAttribute("maidenNimet", maaVakilukuRepository.findAll());
 		model.addAttribute("nimet", paastoRepository.findAll());

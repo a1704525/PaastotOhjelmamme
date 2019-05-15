@@ -33,7 +33,7 @@ body {
 }
 
 #maiden-tiedot {
-	width: 70%;
+	width: 80%;
 	margin: auto;
 	margin-bottom: 20px;
 	font-size: 14px;
@@ -82,6 +82,7 @@ h1 {
 
 h2 {
 	margin-top: 2px;
+	margin-bottom: 0px;
 	color: #515150;
 }
 
