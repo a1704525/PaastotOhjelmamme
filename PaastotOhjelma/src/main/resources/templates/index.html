@@ -134,6 +134,15 @@
 								</tr>
 								<tr>
 									<td id="solu"></td>
+									<td id="solu"></td>
+									<td>
+										<div>
+											<span th:style="'display:block; background-color: red; width: ' + ${maa.paasto} / 1000 + 'px; height: 25px; margin-top: 4px; margin-bottom: 15px;'"></span>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td id="solu"></td>
 									<td id="solu"><p><b>Yksi asukas:</b></p></td>
 									<td id="solu">
 										<div th:switch="${maa.paastoPerAsukas}"> 
@@ -144,7 +153,12 @@
 								</tr>
 								<tr>
 									<td id="solu"></td>
-									<td></td> <!-- Tuohon soluun voi laittaa asukkaan päästöihin perustuvan pylvään -->
+									<td id="solu"></td>
+									<td>
+										<div>
+											<span th:style="'display:block; background-color: #f4ad42; width: ' + ${maa.paastoPerAsukas} * 1.5 + 'px; height: 25px; margin-top: 4px;'"></span>
+										</div>
+									</td>
 								</tr>
 							</table>	
 						</div>
