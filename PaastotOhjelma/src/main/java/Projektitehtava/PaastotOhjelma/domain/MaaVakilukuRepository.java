@@ -8,5 +8,5 @@ import org.springframework.data.repository.query.Param;
 @RepositoryRestResource
 public interface MaaVakilukuRepository extends CrudRepository<MaaVakiluku, Long> {
 
-	List<MaaVakiluku> findByNimi(@Param("maa")String nimi);
+	List<MaaVakiluku> findByVakilukunimi(@Param("vakiluku")String vakilukunimi);
 }

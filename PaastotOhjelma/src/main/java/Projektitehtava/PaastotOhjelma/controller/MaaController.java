@@ -6,9 +6,10 @@ import java.text.DecimalFormat;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.stereotype.Controller;
 
 import Projektitehtava.PaastotOhjelma.domain.Maa;
@@ -42,6 +43,7 @@ public class MaaController {
 		model.addAttribute("maat", maaRepository.findAll());
 		model.addAttribute("maa", new Maa());
 		model.addAttribute("maidenNimet", maaVakilukuRepository.findAll());
+		model.addAttribute("nimet", paastoRepository.findAll());
 		
 		return "index";
 	} 
@@ -64,7 +66,7 @@ public class MaaController {
 		// Käydään läpi vakiluku-lista
 		for (int i = 0; i < vakiluvut.size(); i++ ) {
 			vakiluku = vakiluvut.get(i);
-			if (maa.getNimi().equals(vakiluku.getNimi())) {
+			if (maa.getNimi().equals(vakiluku.getVakilukunimi())) {
 				maanvakiluku = vakiluvut.get(i);
 			} 
 		}
@@ -262,7 +264,7 @@ public class MaaController {
 		// Päästö per asukas
 		double paastoAsukas = maa.getPaastoPerAsukas();
 		
-		DecimalFormat def = new DecimalFormat("###0.0000000");
+		DecimalFormat def = new DecimalFormat("###0.00");
 		
 		System.out.println("Maa-olioon tallennettu nimi " + maa.getNimi() + ", vuosi " + maa.getVuosi() + ", väkiluku " + maa.getVakiluku() + ", päästö " + maa.getPaasto() );
 		System.out.println("Päästöt per asukas: " + def.format(paastoAsukas));
@@ -272,13 +274,20 @@ public class MaaController {
 		return "redirect:index";	
 	}
 	
-	@RequestMapping(value = "/maat")
+	
+	@RequestMapping(value = "/poista/{id}", method = RequestMethod.GET)
+	public String poistaMaa(@PathVariable("id") Long id, Model model) {
+		maaRepository.deleteById(id);
+		return "redirect:../index";
+	}
+
+/*	@RequestMapping(value = "/maat")
 	public String maat(Model model) {
 		model.addAttribute("maat", maaVakilukuRepository.findAll());
 		//System.out.println("controller: " + maaVakilukuRepository.findAll());
 		
 		return "maat";
 	}
-
+*/
 }
  

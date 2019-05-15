@@ -12,7 +12,7 @@ public class MaaVakiluku {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
-	private String nimi;
+	private String vakilukunimi;
 	private int vuosi1960;
 	private int vuosi1961; 
 	private int vuosi1962;
@@ -77,14 +77,14 @@ public class MaaVakiluku {
 		
 	}
 	
-	public MaaVakiluku(String nimi, int vuosi1960, int vuosi1961, int vuosi1962, 
+	public MaaVakiluku(String vakilukunimi, int vuosi1960, int vuosi1961, int vuosi1962, 
 	int vuosi1963, int vuosi1964, int vuosi1965, int vuosi1966, int vuosi1967, int vuosi1968, int vuosi1969, int vuosi1970, int vuosi1971, int vuosi1972, int vuosi1973, int vuosi1974, int vuosi1975,
 	 int vuosi1976, int vuosi1977, int vuosi1978, int vuosi1979, int vuosi1980, int vuosi1981, int vuosi1982, int vuosi1983, int vuosi1984, int vuosi1985, int vuosi1986, int vuosi1987, int vuosi1988,
 	 int vuosi1989, int vuosi1990, int vuosi1991, int vuosi1992, int vuosi1993, int vuosi1994, int vuosi1995, int vuosi1996, int vuosi1997, int vuosi1998, int vuosi1999, int vuosi2000, int vuosi2001,
 	 int vuosi2002, int vuosi2003, int vuosi2004, int vuosi2005, int vuosi2006, int vuosi2007, int vuosi2008, int vuosi2009, int vuosi2010, int vuosi2011, int vuosi2012, int vuosi2013, int vuosi2014,
 	 int vuosi2015, int vuosi2016, int vuosi2017, int vuosi2018) {
 		
-		this.nimi = nimi;
+		this.vakilukunimi = vakilukunimi;
 		this.vuosi1960 = vuosi1960;
 		this.vuosi1961 = vuosi1961; 
 		this.vuosi1962 = vuosi1962;
@@ -619,16 +619,16 @@ public class MaaVakiluku {
 		this.vuosi2018 = vuosi2018;
 	}
 
-	public String getNimi() {
-		return nimi;
+	public String getVakilukunimi() {
+		return vakilukunimi;
 	}
 
 	public int getVuosi1960() {
 		return vuosi1960;
 	}
 
-	public void setNimi(String nimi) {
-		this.nimi = nimi;
+	public void setVakilukunimi(String vakilukunimi) {
+		this.vakilukunimi = vakilukunimi;
 	}
 
 	public void setVuosi1960(int vuosi1960) {
@@ -637,7 +637,7 @@ public class MaaVakiluku {
 
 	@Override
 	public String toString() {
-		return "MaaVakiluku [id=" + id + ", nimi=" + nimi + ", vuosi1960=" + vuosi1960 + ", vuosi1961=" + vuosi1961
+		return "MaaVakiluku [id=" + id + ", vakilukunimi=" + vakilukunimi + ", vuosi1960=" + vuosi1960 + ", vuosi1961=" + vuosi1961
 				+ ", vuosi1962=" + vuosi1962 + ", vuosi1963=" + vuosi1963 + ", vuosi1964=" + vuosi1964 + ", vuosi1965="
 				+ vuosi1965 + ", vuosi1966=" + vuosi1966 + ", vuosi1967=" + vuosi1967 + ", vuosi1968=" + vuosi1968
 				+ ", vuosi1969=" + vuosi1969 + ", vuosi1970=" + vuosi1970 + ", vuosi1971=" + vuosi1971 + ", vuosi1972="

@@ -6,46 +6,51 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.io.BufferedReader;
+import java.io.FileReader;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 import Projektitehtava.PaastotOhjelma.domain.MaaVakiluku;
 
 public class CSVLukija {
-
+		
 	public static List<MaaVakiluku> main(String[] args) {
-		 	
-		// Luodaan lista, johon luetaan kaikki csv-tiedoston rivit
-		List<MaaVakiluku> maidenVakiluvut = lueCsvTiedosto("data/API_SP.POP.TOTL_DS2_en_csv_v2_10576638.csv");
+		
+		int bufferinkoko = 32 * 1024;
+		
+		List<MaaVakiluku> maaVakiluvut = new ArrayList<>();
+		
+		try (BufferedReader bufferedlukija = new BufferedReader(new FileReader("data/API_SP.POP.TOTL_DS2_en_csv_v2_10576638.csv"), bufferinkoko)) {
+			
+			String rivi = bufferedlukija.readLine();
 	
-		return maidenVakiluvut;
-		
-	}
-			
-	private static List<MaaVakiluku> lueCsvTiedosto(String csvTiedosto) {
-		List<MaaVakiluku> maidenVakiluvut = new ArrayList<>();
-		Path polku = Paths.get(csvTiedosto);
-		
-		try (BufferedReader buf = Files.newBufferedReader(polku, StandardCharsets.US_ASCII)) {
-			
-			String rivi = buf.readLine();
-			
 			while (rivi != null) {
+				
+				// Muuetaan tyhjät tiedot 
+				rivi = rivi.replace("\"\"", "\"0\"");
+				
+				rivi = rivi.replace("\",", "\";");
+				
+				// Korvataan asioiden sisällä olevat pilkut välilyönnillä
+				//rivi = rivi.replace(", ", " ");
 				
 				// Poistetaan lainausmerkit
 				rivi = rivi.replace("\"", "");
 				
-				// Korvataan asioiden sisällä olevat pilkut välilyönnillä
-				rivi = rivi.replace(", ", " ");
+				rivi = rivi.replace("Country Name", "Valitse maa");
 				
-				rivi = rivi.replace(",,", ",0,");
+				//rivi = rivi.replace(";;", ";0;");
+				//rivi = rivi.replace(";;", ";0;");
 				
+			//	System.out.println("Päästös nimi: " + rivi);
+				
+			
 				// Erotellaan tiedot
-				String[] arvot = rivi.split(",");
+				String[] arvot = rivi.split(";");
+						
+				MaaVakiluku uusiMaaVakiluku = new MaaVakiluku();
 				
-				MaaVakiluku uusiMaa = new MaaVakiluku();
-				
-				String nimi = arvot[0];
+				String vakilukunimi = arvot[0];
 				int vuosi1960 = Integer.parseInt(arvot[4]);
 				int vuosi1961 = Integer.parseInt(arvot[5]);
 				int vuosi1962 = Integer.parseInt(arvot[6]);
@@ -106,79 +111,80 @@ public class CSVLukija {
 				int vuosi2017 = Integer.parseInt(arvot[61]);
 				int vuosi2018 = Integer.parseInt(arvot[62]);
 				
-				uusiMaa.setNimi(nimi);
-				uusiMaa.setVuosi1960(vuosi1960);
-				uusiMaa.setVuosi1961(vuosi1961);
-				uusiMaa.setVuosi1962(vuosi1962);
-				uusiMaa.setVuosi1963(vuosi1963);
-				uusiMaa.setVuosi1964(vuosi1964);
-				uusiMaa.setVuosi1965(vuosi1965);
-				uusiMaa.setVuosi1966(vuosi1966);
-				uusiMaa.setVuosi1967(vuosi1967);
-				uusiMaa.setVuosi1968(vuosi1968);
-				uusiMaa.setVuosi1969(vuosi1969);
-				uusiMaa.setVuosi1970(vuosi1970);
-				uusiMaa.setVuosi1971(vuosi1971);
-				uusiMaa.setVuosi1972(vuosi1972);
-				uusiMaa.setVuosi1973(vuosi1973);
-				uusiMaa.setVuosi1974(vuosi1974);
-				uusiMaa.setVuosi1975(vuosi1975);
-				uusiMaa.setVuosi1976(vuosi1976);
-				uusiMaa.setVuosi1977(vuosi1977);
-				uusiMaa.setVuosi1978(vuosi1978);
-				uusiMaa.setVuosi1979(vuosi1979);
-				uusiMaa.setVuosi1980(vuosi1980);
-				uusiMaa.setVuosi1981(vuosi1981);
-				uusiMaa.setVuosi1982(vuosi1982);
-				uusiMaa.setVuosi1983(vuosi1983);
-				uusiMaa.setVuosi1984(vuosi1984);
-				uusiMaa.setVuosi1985(vuosi1985);
-				uusiMaa.setVuosi1986(vuosi1986);
-				uusiMaa.setVuosi1987(vuosi1987);
-				uusiMaa.setVuosi1988(vuosi1988);
-				uusiMaa.setVuosi1989(vuosi1989);
-				uusiMaa.setVuosi1990(vuosi1990);
-				uusiMaa.setVuosi1991(vuosi1991);
-				uusiMaa.setVuosi1992(vuosi1992);
-				uusiMaa.setVuosi1993(vuosi1993);
-				uusiMaa.setVuosi1994(vuosi1994);
-				uusiMaa.setVuosi1995(vuosi1995);
-				uusiMaa.setVuosi1996(vuosi1996);
-				uusiMaa.setVuosi1997(vuosi1997);
-				uusiMaa.setVuosi1998(vuosi1998);
-				uusiMaa.setVuosi1999(vuosi1999);
-				uusiMaa.setVuosi2000(vuosi2000);
-				uusiMaa.setVuosi2001(vuosi2001);
-				uusiMaa.setVuosi2002(vuosi2002);
-				uusiMaa.setVuosi2003(vuosi2003);
-				uusiMaa.setVuosi2004(vuosi2004);
-				uusiMaa.setVuosi2005(vuosi2005);
-				uusiMaa.setVuosi2006(vuosi2006);
-				uusiMaa.setVuosi2007(vuosi2007);
-				uusiMaa.setVuosi2008(vuosi2008);
-				uusiMaa.setVuosi2009(vuosi2009);
-				uusiMaa.setVuosi2010(vuosi2010);
-				uusiMaa.setVuosi2011(vuosi2011);
-				uusiMaa.setVuosi2012(vuosi2012);
-				uusiMaa.setVuosi2013(vuosi2013);
-				uusiMaa.setVuosi2014(vuosi2014);
-				uusiMaa.setVuosi2015(vuosi2015);
-				uusiMaa.setVuosi2016(vuosi2016);
-				uusiMaa.setVuosi2017(vuosi2017);
-				uusiMaa.setVuosi2018(vuosi2018);
+				uusiMaaVakiluku.setVakilukunimi(vakilukunimi);
+				uusiMaaVakiluku.setVuosi1960(vuosi1960);
+				uusiMaaVakiluku.setVuosi1961(vuosi1961);
+				uusiMaaVakiluku.setVuosi1962(vuosi1962);
+				uusiMaaVakiluku.setVuosi1963(vuosi1963);
+				uusiMaaVakiluku.setVuosi1964(vuosi1964);
+				uusiMaaVakiluku.setVuosi1965(vuosi1965);
+				uusiMaaVakiluku.setVuosi1966(vuosi1966);
+				uusiMaaVakiluku.setVuosi1967(vuosi1967);
+				uusiMaaVakiluku.setVuosi1968(vuosi1968);
+				uusiMaaVakiluku.setVuosi1969(vuosi1969);
+				uusiMaaVakiluku.setVuosi1970(vuosi1970);
+				uusiMaaVakiluku.setVuosi1971(vuosi1971);
+				uusiMaaVakiluku.setVuosi1972(vuosi1972);
+				uusiMaaVakiluku.setVuosi1973(vuosi1973);
+				uusiMaaVakiluku.setVuosi1974(vuosi1974);
+				uusiMaaVakiluku.setVuosi1975(vuosi1975);
+				uusiMaaVakiluku.setVuosi1976(vuosi1976);
+				uusiMaaVakiluku.setVuosi1977(vuosi1977);
+				uusiMaaVakiluku.setVuosi1978(vuosi1978);
+				uusiMaaVakiluku.setVuosi1979(vuosi1979);
+				uusiMaaVakiluku.setVuosi1980(vuosi1980);
+				uusiMaaVakiluku.setVuosi1981(vuosi1981);
+				uusiMaaVakiluku.setVuosi1982(vuosi1982);
+				uusiMaaVakiluku.setVuosi1983(vuosi1983);
+				uusiMaaVakiluku.setVuosi1984(vuosi1984);
+				uusiMaaVakiluku.setVuosi1985(vuosi1985);
+				uusiMaaVakiluku.setVuosi1986(vuosi1986);
+				uusiMaaVakiluku.setVuosi1987(vuosi1987);
+				uusiMaaVakiluku.setVuosi1988(vuosi1988);
+				uusiMaaVakiluku.setVuosi1989(vuosi1989);
+				uusiMaaVakiluku.setVuosi1990(vuosi1990);
+				uusiMaaVakiluku.setVuosi1991(vuosi1991);
+				uusiMaaVakiluku.setVuosi1992(vuosi1992);
+				uusiMaaVakiluku.setVuosi1993(vuosi1993);
+				uusiMaaVakiluku.setVuosi1994(vuosi1994);
+				uusiMaaVakiluku.setVuosi1995(vuosi1995);
+				uusiMaaVakiluku.setVuosi1996(vuosi1996);
+				uusiMaaVakiluku.setVuosi1997(vuosi1997);
+				uusiMaaVakiluku.setVuosi1998(vuosi1998);
+				uusiMaaVakiluku.setVuosi1999(vuosi1999);
+				uusiMaaVakiluku.setVuosi2000(vuosi2000);
+				uusiMaaVakiluku.setVuosi2001(vuosi2001);
+				uusiMaaVakiluku.setVuosi2002(vuosi2002);
+				uusiMaaVakiluku.setVuosi2003(vuosi2003);
+				uusiMaaVakiluku.setVuosi2004(vuosi2004);
+				uusiMaaVakiluku.setVuosi2005(vuosi2005);
+				uusiMaaVakiluku.setVuosi2006(vuosi2006);
+				uusiMaaVakiluku.setVuosi2007(vuosi2007);
+				uusiMaaVakiluku.setVuosi2008(vuosi2008);
+				uusiMaaVakiluku.setVuosi2009(vuosi2009);
+				uusiMaaVakiluku.setVuosi2010(vuosi2010);
+				uusiMaaVakiluku.setVuosi2011(vuosi2011);
+				uusiMaaVakiluku.setVuosi2012(vuosi2012);
+				uusiMaaVakiluku.setVuosi2013(vuosi2013);
+				uusiMaaVakiluku.setVuosi2014(vuosi2014);
+				uusiMaaVakiluku.setVuosi2015(vuosi2015);
+				uusiMaaVakiluku.setVuosi2016(vuosi2016);
+				uusiMaaVakiluku.setVuosi2017(vuosi2017);
+				uusiMaaVakiluku.setVuosi2018(vuosi2018);
 				
 				
-				System.out.println("Uuden maan nimi: " + uusiMaa.getNimi());
+				System.out.println("Uuden maan nimi: " + uusiMaaVakiluku.getVakilukunimi());
 				
-				maidenVakiluvut.add(uusiMaa);
+				maaVakiluvut.add(uusiMaaVakiluku);
 				
-				rivi = buf.readLine();
+				rivi = bufferedlukija.readLine();
 			}
 			
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 		
-		return maidenVakiluvut;
+		return maaVakiluvut;
+
 	}
 }

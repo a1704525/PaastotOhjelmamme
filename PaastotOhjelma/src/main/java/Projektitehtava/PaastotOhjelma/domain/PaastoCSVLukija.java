@@ -6,44 +6,45 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.io.BufferedReader;
+import java.io.FileReader;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 public class PaastoCSVLukija {
-	
+					
 		public static List<Paasto> main(String[] args) {
-			 	
-			// Luodaan lista, johon luetaan kaikki csv-tiedoston rivit
-			List<Paasto> paastot = luePaastoCsvTiedosto("data/API_EN.ATM.CO2E.KT_DS2_en_csv_v2_10576625.csv");
-		
-			return paastot;
 			
+			int bufferkoko = 16 * 1024;
 			
-			
-		}
-				
-		private static List<Paasto> luePaastoCsvTiedosto(String PaastoCsvTiedosto) {
 			List<Paasto> paastot = new ArrayList<>();
-			Path tamapolku = Paths.get(PaastoCsvTiedosto);
-			
-			try (BufferedReader buf = Files.newBufferedReader(tamapolku, StandardCharsets.US_ASCII)) {
+
+			try (BufferedReader bufferedlukija = new BufferedReader(new FileReader("data/API_EN.ATM.CO2E.KT_DS2_en_csv_v2_10576625.csv"), bufferkoko)){
 				
-				String rivi = buf.readLine();
+				String rivi = bufferedlukija.readLine();
 			
 				while (rivi != null) {
+					
+					// Muuetaan tyhjät tiedot 
+					rivi = rivi.replace("\"\"", "\"0\"");
+					
+					rivi = rivi.replace("\",", "\";");
+					
+					// Korvataan asioiden sisällä olevat pilkut välilyönnillä
+					//rivi = rivi.replace(", ", " ");
 					
 					// Poistetaan lainausmerkit
 					rivi = rivi.replace("\"", "");
 					
-					// Korvataan asioiden sisällä olevat pilkut välilyönnillä
-					rivi = rivi.replace(", ", " ");
+					rivi = rivi.replace("Country Name", "Valitse maa");
 					
-					// Muuetaan tyhjät tiedot 
-					rivi = rivi.replace(",,", ",0.00,");
-					rivi = rivi.replace(",,", ",0.00,");
+					//rivi = rivi.replace(";;", ";0;");
+				//	rivi = rivi.replace(";;", ";0;");
 					
+					//System.out.println("Päästös nimi: " + rivi);
+					
+				
 					// Erotellaan tiedot
-					String[] arvot = rivi.split(",");
+					String[] arvot = rivi.split(";");
 					
 					Paasto uusiPaasto = new Paasto();
 					
@@ -176,7 +177,8 @@ public class PaastoCSVLukija {
 					
 					paastot.add(uusiPaasto);
 					
-					rivi = buf.readLine();
+					rivi = bufferedlukija.readLine();
+
 				}
 				
 			} catch (Exception e) {

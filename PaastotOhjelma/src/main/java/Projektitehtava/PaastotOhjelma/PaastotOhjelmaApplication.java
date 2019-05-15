@@ -27,24 +27,33 @@ public class PaastotOhjelmaApplication {
 	}
 	
 	@Bean 
-	public CommandLineRunner maidenNimetJaVakiluvut(MaaVakilukuRepository maavakilukurepository) {
+	public CommandLineRunner maidenNimetVakiluvutJaPaastot(MaaVakilukuRepository maavakilukurepository, PaastoRepository paastorepository) {
 		return (args) -> {
 			
 			// Käynnistetään CSVLukija
-	    	List<MaaVakiluku> maidenVakiluvut = CSVLukija.main(args);
+	    	List<MaaVakiluku> maaVakiluvut = CSVLukija.main(args);
+	    	List<Paasto> paastot = PaastoCSVLukija.main(args);
 	   
 	    	// Käydään läpi listan maa-oliot
-	    	for (MaaVakiluku maa: maidenVakiluvut) {
+	    	for (MaaVakiluku maaVakiluku: maaVakiluvut) {
 	    		
 	    		log.info("Tallennetaan maiden nimiä ja väkilukuja");
-	    		maavakilukurepository.save(maa);
-	
-	    
+	    		maavakilukurepository.save(maaVakiluku);
 	    	}	
+	    	
+	    	// Käydään läpi listan maa-oliot
+	    	for (Paasto paasto: paastot) {
+	    		
+	    		log.info("Tallennetaan maiden nimiä ja päästöjä");
+	    		paastorepository.save(paasto);
+	    		
+	    		System.out.println("controller: " + paasto);
+	    		
+	    	}
 		};
 	}
 	
-	@Bean 
+	/*@Bean 
 	public CommandLineRunner maidenNimetJaPaastot(PaastoRepository paastorepository) {
 		return (args) -> {
 			
@@ -56,8 +65,9 @@ public class PaastotOhjelmaApplication {
 	    		
 	    		log.info("Tallennetaan maiden nimiä ja päästöjä");
 	    		paastorepository.save(paasto);
+
 	    
 	    	}	
 		};
-	}
+	}*/
 }
