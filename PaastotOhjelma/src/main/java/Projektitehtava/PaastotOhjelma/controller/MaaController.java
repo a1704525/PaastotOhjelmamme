@@ -46,7 +46,7 @@ public class MaaController {
 		List<Maa> maalista = new ArrayList<Maa>();
 		maalista = (List<Maa>) maaRepository.findAll();
 		Collections.reverse(maalista);
-
+		
 		model.addAttribute("maat", maalista);
 		model.addAttribute("maa", new Maa());
 		model.addAttribute("maidenNimet", maaVakilukuRepository.findAll());

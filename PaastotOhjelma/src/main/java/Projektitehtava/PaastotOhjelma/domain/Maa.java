@@ -77,7 +77,14 @@ public class Maa {
 	
 	// Laskee päästöjen määrän per asukas
 	public double getPaastoPerAsukas() {
-		double paasto = (double) this.paasto / this.vakiluku*1000;
+		
+		double paasto = 0.0;
+		
+		if (this.paasto != 0 && this.vakiluku != 0) {
+			paasto = (double) this.paasto / this.vakiluku*1000;
+		} else {
+			paasto = 0.0;
+		}
 		
 		return paasto;
 	}
