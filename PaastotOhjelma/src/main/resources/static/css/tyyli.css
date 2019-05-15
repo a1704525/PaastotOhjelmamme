@@ -18,6 +18,7 @@ body {
 #lista {
 	width: 250px;
 	height: 25px;
+	background-color: #eaf1fc;
 }
 
 #painike {
@@ -36,7 +37,6 @@ body {
 	margin: auto;
 	margin-bottom: 20px;
 	font-size: 14px;
-	border-color: black;
 }
 
 #maan-tiedot {
@@ -44,7 +44,7 @@ body {
 	margin-top: 15px;
 	width: 100%;
 	padding-bottom: 20px;
-	border: 3px solid #e0effc;
+	border: 3px solid #f0d0fd;
 }
 
 #taulukko {
@@ -61,6 +61,7 @@ body {
 
 #poista {
 	color: red;
+	padding-right: 5px;
 }
 
 #solu {
@@ -68,6 +69,11 @@ body {
 	text-align: left;
 	padding-bottom: 0;
 	padding-left: 10px;
+}
+
+#ei-saatavilla {
+	font-style: italic;
+	color: grey;
 }
 
 h1 {
@@ -92,5 +98,6 @@ h4 {
 p {
 	margin-top: 0px;
 	margin-bottom: 0px;
+	text-align: left;
 }
 

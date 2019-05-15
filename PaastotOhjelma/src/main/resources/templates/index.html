@@ -110,7 +110,12 @@
 							<table id="taulukko">
 								<tr>
 									<td id="solu"><h3>Väkiluku:</h3></td>
-									<td id="solu" th:text="${#numbers.formatDecimal(maa.vakiluku, 0, 'WHITESPACE', 0, 'COMMA')} + ' asukasta'">Väkiluku</td>
+									<td id="solu">
+										<div th:switch="${maa.vakiluku}"> 
+  											<p th:case="'0'" id="ei-saatavilla">Tietoa ei saatavilla</p>
+  											<p th:case="*" th:text="${#numbers.formatDecimal(maa.vakiluku, 0, 'WHITESPACE', 0, 'COMMA')} + ' asukasta'">Väkiluku</p> 
+										</div>
+									</td>
 									<td id="solu"></td>
 								</tr>
 							</table>
@@ -120,12 +125,21 @@
 								<tr>
 									<td id="solu"><h3>CO2-päästöt:</h3></td>
 									<td id="solu"><p><b>Koko maa:</b></p></td>
-									<td id="solu" th:text="${#numbers.formatDecimal(maa.paasto, 0, 'WHITESPACE', 0, 'COMMA')} + ' tuhatta tonnia'">Päästö</td>
+									<td id="solu">
+										<div th:switch="${maa.paasto}"> 
+  											<p th:case="'0'" id="ei-saatavilla">Tietoa ei saatavilla</p>
+  											<p th:case="*" th:text="${#numbers.formatDecimal(maa.paasto, 0, 'WHITESPACE', 0, 'COMMA')} + ' tuhatta tonnia'">Päästö</p> 
+										</div>
+									</td>
 								</tr>
 								<tr>
 									<td id="solu"></td>
 									<td id="solu"><p><b>Yksi asukas:</b></p></td>
 									<td id="solu" th:text="${#numbers.formatDecimal(maa.paastoPerAsukas, 1,2)} + ' tonnia'">Päästö per asukas</td>
+								</tr>
+								<tr>
+									<td id="solu"></td>
+									<td></td> <!-- Tuohon soluun voi laittaa asukkaan päästöihin perustuvan pylvään -->
 								</tr>
 							</table>	
 						</div>
