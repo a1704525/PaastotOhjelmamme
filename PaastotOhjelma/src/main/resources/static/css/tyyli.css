@@ -15,6 +15,17 @@ body {
 	padding-bottom: 20px;
 }
 
+#kaikkitiedot {
+	background-color: #eaf1fc;
+	width: 370%;
+	margin: 20px;
+	text-align: left;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
 #lista {
 	width: 250px;
 	height: 25px;

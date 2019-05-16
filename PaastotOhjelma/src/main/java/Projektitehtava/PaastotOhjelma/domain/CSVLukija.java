@@ -33,7 +33,7 @@ public class CSVLukija {
 				// Poistetaan lainausmerkit
 				rivi = rivi.replace("\"", "");
 				
-				rivi = rivi.replace("Country Name", "Valitse maa");
+				rivi = rivi.replace("Country Name", "Maat");
 				
 				//rivi = rivi.replace(";;", ";0;");
 				//rivi = rivi.replace(";;", ";0;");

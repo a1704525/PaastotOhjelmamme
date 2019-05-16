@@ -290,13 +290,13 @@ public class MaaController {
 
 
 	
-/*	@RequestMapping(value = "/maat")
+	@RequestMapping(value = "/maat")
 	public String maat(Model model) {
-		model.addAttribute("maat", maaVakilukuRepository.findAll());
+		model.addAttribute("maaVakiluvut", maaVakilukuRepository.findAll());
 		//System.out.println("controller: " + maaVakilukuRepository.findAll());
 		
 		return "maat";
 	}
-*/
+
 }
  

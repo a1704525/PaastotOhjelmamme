@@ -11,12 +11,19 @@
 	<div id="tausta">
 		<h1>Maiden päästöt</h1>
 		<form th:object="${maa}" th:action="@{/lisaamaa}" action="#" method="post">
+		
+			<div>
+			<a href="/paasto">Kaikki päästöt</a> <br><br> <a href="/maat">Väkiluvut</a> 
+			<br><br>
+			</div>
+			
 			<div>
 		  		<h4>Valitse maa:</h4><br/>
 				<select id="lista" th:field="*{nimi}">
 					<option th:each="maannimi: ${nimet}" th:value="${maannimi.paastonimi}" th:text="${maannimi.paastonimi}"></option>
 				</select>
 			</div>
+		
 			<br><br>
 		
 			<div>

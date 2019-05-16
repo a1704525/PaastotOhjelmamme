@@ -4,75 +4,77 @@
 <title>Maat</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name='viewport' content='width=device-width, initial-scale=1'>
+<link type="text/css" rel="stylesheet" href="/css/tyyli.css" th:href="@{css/tyyli.css}" />
 
 </head>
 <body>
 
-	<div>
-		<h1>Maa</h1>
+	<div id="kaikkitiedot">
+	<a href="/index">Takaisin</a>
+		<h1>Väkiluvut</h1>
 		<div>
 			<table>
-				<tr th:each="maa : ${maat}">
-					<td th:text="${maa.nimi}">Maa</td>
-					<td th:text="${maa.vuosi1960}">Vuosi</td>
-					<td th:text="${maa.vuosi1961}">Vuosi</td>
-					<td th:text="${maa.vuosi1962}">Vuosi</td>
-					<td th:text="${maa.vuosi1963}">Vuosi</td>
-					<td th:text="${maa.vuosi1964}">Vuosi</td>
-					<td th:text="${maa.vuosi1965}">Vuosi</td>
-					<td th:text="${maa.vuosi1966}">Vuosi</td>
-					<td th:text="${maa.vuosi1967}">Vuosi</td>
-					<td th:text="${maa.vuosi1968}">Vuosi</td>
-					<td th:text="${maa.vuosi1969}">Vuosi</td>
-					<td th:text="${maa.vuosi1970}">Vuosi</td>
-					<td th:text="${maa.vuosi1971}">Vuosi</td>
-					<td th:text="${maa.vuosi1972}">Vuosi</td>
-					<td th:text="${maa.vuosi1973}">Vuosi</td>
-					<td th:text="${maa.vuosi1974}">Vuosi</td>
-					<td th:text="${maa.vuosi1975}">Vuosi</td>
-					<td th:text="${maa.vuosi1976}">Vuosi</td>
-					<td th:text="${maa.vuosi1977}">Vuosi</td>
-					<td th:text="${maa.vuosi1978}">Vuosi</td>
-					<td th:text="${maa.vuosi1979}">Vuosi</td>
-					<td th:text="${maa.vuosi1980}">Vuosi</td>
-					<td th:text="${maa.vuosi1981}">Vuosi</td>
-					<td th:text="${maa.vuosi1982}">Vuosi</td>
-					<td th:text="${maa.vuosi1983}">Vuosi</td>
-					<td th:text="${maa.vuosi1984}">Vuosi</td>
-					<td th:text="${maa.vuosi1985}">Vuosi</td>
-					<td th:text="${maa.vuosi1986}">Vuosi</td>
-					<td th:text="${maa.vuosi1987}">Vuosi</td>
-					<td th:text="${maa.vuosi1988}">Vuosi</td>
-					<td th:text="${maa.vuosi1989}">Vuosi</td>
-					<td th:text="${maa.vuosi1990}">Vuosi</td>
-					<td th:text="${maa.vuosi1991}">Vuosi</td>
-					<td th:text="${maa.vuosi1992}">Vuosi</td>
-					<td th:text="${maa.vuosi1993}">Vuosi</td>
-					<td th:text="${maa.vuosi1994}">Vuosi</td>
-					<td th:text="${maa.vuosi1995}">Vuosi</td>
-					<td th:text="${maa.vuosi1996}">Vuosi</td>
-					<td th:text="${maa.vuosi1997}">Vuosi</td>
-					<td th:text="${maa.vuosi1998}">Vuosi</td>
-					<td th:text="${maa.vuosi1999}">Vuosi</td>
-					<td th:text="${maa.vuosi2000}">Vuosi</td>
-					<td th:text="${maa.vuosi2001}">Vuosi</td>
-					<td th:text="${maa.vuosi2002}">Vuosi</td>
-					<td th:text="${maa.vuosi2003}">Vuosi</td>
-					<td th:text="${maa.vuosi2004}">Vuosi</td>
-					<td th:text="${maa.vuosi2005}">Vuosi</td>
-					<td th:text="${maa.vuosi2006}">Vuosi</td>
-					<td th:text="${maa.vuosi2007}">Vuosi</td>
-					<td th:text="${maa.vuosi2008}">Vuosi</td>
-					<td th:text="${maa.vuosi2009}">Vuosi</td>
-					<td th:text="${maa.vuosi2010}">Vuosi</td>
-					<td th:text="${maa.vuosi2011}">Vuosi</td>
-					<td th:text="${maa.vuosi2012}">Vuosi</td>
-					<td th:text="${maa.vuosi2013}">Vuosi</td>
-					<td th:text="${maa.vuosi2014}">Vuosi</td>
-					<td th:text="${maa.vuosi2015}">Vuosi</td>
-					<td th:text="${maa.vuosi2016}">Vuosi</td>
-					<td th:text="${maa.vuosi2017}">Vuosi</td>
-					<td th:text="${maa.vuosi2018}">Vuosi</td>
+				<tr th:each="maaVakiluku : ${maaVakiluvut}">
+					<td th:text="${maaVakiluku.vakilukunimi}">Maa</td>
+					<td th:text="${maaVakiluku.vuosi1960}">Vuosi</td>
+					<td th:text="${maaVakiluku.vuosi1961}">Vuosi</td>
+					<td th:text="${maaVakiluku.vuosi1962}">Vuosi</td>
+					<td th:text="${maaVakiluku.vuosi1963}">Vuosi</td>
+					<td th:text="${maaVakiluku.vuosi1964}">Vuosi</td>
+					<td th:text="${maaVakiluku.vuosi1965}">Vuosi</td>
+					<td th:text="${maaVakiluku.vuosi1966}">Vuosi</td>
+					<td th:text="${maaVakiluku.vuosi1967}">Vuosi</td>
+					<td th:text="${maaVakiluku.vuosi1968}">Vuosi</td>
+					<td th:text="${maaVakiluku.vuosi1969}">Vuosi</td>
+					<td th:text="${maaVakiluku.vuosi1970}">Vuosi</td>
+					<td th:text="${maaVakiluku.vuosi1971}">Vuosi</td>
+					<td th:text="${maaVakiluku.vuosi1972}">Vuosi</td>
+					<td th:text="${maaVakiluku.vuosi1973}">Vuosi</td>
+					<td th:text="${maaVakiluku.vuosi1974}">Vuosi</td>
+					<td th:text="${maaVakiluku.vuosi1975}">Vuosi</td>
+					<td th:text="${maaVakiluku.vuosi1976}">Vuosi</td>
+					<td th:text="${maaVakiluku.vuosi1977}">Vuosi</td>
+					<td th:text="${maaVakiluku.vuosi1978}">Vuosi</td>
+					<td th:text="${maaVakiluku.vuosi1979}">Vuosi</td>
+					<td th:text="${maaVakiluku.vuosi1980}">Vuosi</td>
+					<td th:text="${maaVakiluku.vuosi1981}">Vuosi</td>
+					<td th:text="${maaVakiluku.vuosi1982}">Vuosi</td>
+					<td th:text="${maaVakiluku.vuosi1983}">Vuosi</td>
+					<td th:text="${maaVakiluku.vuosi1984}">Vuosi</td>
+					<td th:text="${maaVakiluku.vuosi1985}">Vuosi</td>
+					<td th:text="${maaVakiluku.vuosi1986}">Vuosi</td>
+					<td th:text="${maaVakiluku.vuosi1987}">Vuosi</td>
+					<td th:text="${maaVakiluku.vuosi1988}">Vuosi</td>
+					<td th:text="${maaVakiluku.vuosi1989}">Vuosi</td>
+					<td th:text="${maaVakiluku.vuosi1990}">Vuosi</td>
+					<td th:text="${maaVakiluku.vuosi1991}">Vuosi</td>
+					<td th:text="${maaVakiluku.vuosi1992}">Vuosi</td>
+					<td th:text="${maaVakiluku.vuosi1993}">Vuosi</td>
+					<td th:text="${maaVakiluku.vuosi1994}">Vuosi</td>
+					<td th:text="${maaVakiluku.vuosi1995}">Vuosi</td>
+					<td th:text="${maaVakiluku.vuosi1996}">Vuosi</td>
+					<td th:text="${maaVakiluku.vuosi1997}">Vuosi</td>
+					<td th:text="${maaVakiluku.vuosi1998}">Vuosi</td>
+					<td th:text="${maaVakiluku.vuosi1999}">Vuosi</td>
+					<td th:text="${maaVakiluku.vuosi2000}">Vuosi</td>
+					<td th:text="${maaVakiluku.vuosi2001}">Vuosi</td>
+					<td th:text="${maaVakiluku.vuosi2002}">Vuosi</td>
+					<td th:text="${maaVakiluku.vuosi2003}">Vuosi</td>
+					<td th:text="${maaVakiluku.vuosi2004}">Vuosi</td>
+					<td th:text="${maaVakiluku.vuosi2005}">Vuosi</td>
+					<td th:text="${maaVakiluku.vuosi2006}">Vuosi</td>
+					<td th:text="${maaVakiluku.vuosi2007}">Vuosi</td>
+					<td th:text="${maaVakiluku.vuosi2008}">Vuosi</td>
+					<td th:text="${maaVakiluku.vuosi2009}">Vuosi</td>
+					<td th:text="${maaVakiluku.vuosi2010}">Vuosi</td>
+					<td th:text="${maaVakiluku.vuosi2011}">Vuosi</td>
+					<td th:text="${maaVakiluku.vuosi2012}">Vuosi</td>
+					<td th:text="${maaVakiluku.vuosi2013}">Vuosi</td>
+					<td th:text="${maaVakiluku.vuosi2014}">Vuosi</td>
+					<td th:text="${maaVakiluku.vuosi2015}">Vuosi</td>
+					<td th:text="${maaVakiluku.vuosi2016}">Vuosi</td>
+					<td th:text="${maaVakiluku.vuosi2017}">Vuosi</td>
+					<td th:text="${maaVakiluku.vuosi2018}">Vuosi</td>
 					
 				</tr>
 			</table>

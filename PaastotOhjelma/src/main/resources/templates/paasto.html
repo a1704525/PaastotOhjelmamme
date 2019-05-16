@@ -4,12 +4,14 @@
 <title>paastot</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name='viewport' content='width=device-width, initial-scale=1'>
+<link type="text/css" rel="stylesheet" href="/css/tyyli.css" th:href="@{css/tyyli.css}" />
 
 </head>
 <body>
 
-	<div>
-		<h1>Paasto</h1>
+	<div id="kaikkitiedot">
+	<a href="/index">Takaisin</a>
+		<h1>Päästöt</h1> 
 		<div>
 			<table>
 				<tr th:each="paasto : ${paastot}">
