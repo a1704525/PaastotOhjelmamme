@@ -24,25 +24,18 @@ public class PaastoCSVLukija {
 			
 				while (rivi != null) {
 					
-					// Muuetaan tyhjät tiedot 
+					// Muuetaan tyhjät tiedot nolliksi
 					rivi = rivi.replace("\"\"", "\"0\"");
 					
+					// Muutetaan sarakkeita erottavat pilkut puolipilkuiksi
 					rivi = rivi.replace("\",", "\";");
-					
-					// Korvataan asioiden sisällä olevat pilkut välilyönnillä
-					//rivi = rivi.replace(", ", " ");
 					
 					// Poistetaan lainausmerkit
 					rivi = rivi.replace("\"", "");
 					
+					// Muutetaan CSV-tiedoston Country Name nimeksi Maat.
 					rivi = rivi.replace("Country Name", "Maat");
-					
-					//rivi = rivi.replace(";;", ";0;");
-				//	rivi = rivi.replace(";;", ";0;");
-					
-					//System.out.println("Päästös nimi: " + rivi);
-					
-				
+		
 					// Erotellaan tiedot
 					String[] arvot = rivi.split(";");
 					
@@ -171,10 +164,6 @@ public class PaastoCSVLukija {
 					uusiPaasto.setVuosi2017(vuosi2017);
 					uusiPaasto.setVuosi2018(vuosi2018);
 				
-					
-					
-					System.out.println("Päästös nimi: " + uusiPaasto.getPaastonimi());
-					
 					paastot.add(uusiPaasto);
 					
 					rivi = bufferedlukija.readLine();

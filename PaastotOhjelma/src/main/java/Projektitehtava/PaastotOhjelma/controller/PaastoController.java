@@ -17,7 +17,6 @@ public class PaastoController {
 	public String index(Model model) {
 		model.addAttribute("paastot", paastoRepository.findAll());
 
-		
 		return "paasto";
 	} 
 

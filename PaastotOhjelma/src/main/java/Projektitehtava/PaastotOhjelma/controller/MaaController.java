@@ -2,16 +2,20 @@ package Projektitehtava.PaastotOhjelma.controller;
 
 import javax.validation.Valid;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 import org.springframework.stereotype.Controller;
 
 import Projektitehtava.PaastotOhjelma.domain.Maa;
@@ -32,13 +36,21 @@ public class MaaController {
 	
 	@Autowired
 	private PaastoRepository paastoRepository;
-	
-	
-	/* ei toimi
-	@RequestMapping("/")
-	public String avaaIndexSivu() {
-		return "index";
-	}*/
+
+    @RequestMapping(value = "/")
+    public String avaaIndexSivu(Model model) {
+    	
+		List<Maa> maalista = new ArrayList<Maa>();
+		maalista = (List<Maa>) maaRepository.findAll();
+		Collections.reverse(maalista);
+		
+		model.addAttribute("maat", maalista);
+		model.addAttribute("maa", new Maa());
+		model.addAttribute("maidenNimet", maaVakilukuRepository.findAll());
+		model.addAttribute("nimet", paastoRepository.findAll());
+		
+        return "index";
+    }
 	
 	@RequestMapping(value = "/index")
 	public String index(Model model) {
@@ -57,7 +69,6 @@ public class MaaController {
 	 
 	@PostMapping("/lisaamaa")
 	public String lisaaMaa(@Valid Maa maa, Model model) { 
-		//maaRepository.save(maa);
 		
 		// Oliot, joilla luetaan listojen olioita
 		MaaVakiluku vakiluku = new MaaVakiluku();
@@ -268,16 +279,6 @@ public class MaaController {
 		 
 		maaRepository.save(maa);
 		
-		// Päästö per asukas
-		double paastoAsukas = maa.getPaastoPerAsukas();
-		
-		DecimalFormat def = new DecimalFormat("###0.00");
-		
-		System.out.println("Maa-olioon tallennettu nimi " + maa.getNimi() + ", vuosi " + maa.getVuosi() + ", väkiluku " + maa.getVakiluku() + ", päästö " + maa.getPaasto() );
-		System.out.println("Päästöt per asukas: " + def.format(paastoAsukas));
-		System.out.println("MaaRepositoryn sisältö: " + maaRepository.findAll());
-		
-		
 		return "redirect:index";	
 	}
 	
@@ -288,15 +289,56 @@ public class MaaController {
 		return "redirect:../index";
 	}
 
-
 	
 	@RequestMapping(value = "/maat")
 	public String maat(Model model) {
-		model.addAttribute("maaVakiluvut", maaVakilukuRepository.findAll());
-		//System.out.println("controller: " + maaVakilukuRepository.findAll());
-		
+		model.addAttribute("maaVakiluvut", maaVakilukuRepository.findAll());		
 		return "maat";
 	}
+	
+	// RESTful service Haetaan kaikki maat ja vakiluvut
+	@RequestMapping(value = "/kaikkimaatjavakiluvut", method = RequestMethod.GET)
+	public @ResponseBody List<MaaVakiluku> maaVakilukuListRest() {
+		return (List<MaaVakiluku>) maaVakilukuRepository.findAll();
+	}
+	
+	// RESTful service Haetaan id:n perusteella maa ja vakiluku
+	@RequestMapping(value = "/kaikkimaatjavakiluvut/{id}", method = RequestMethod.GET)
+	public @ResponseBody Optional<MaaVakiluku> findMaaVakilukuRest(@PathVariable("id") Long maaVakilukuId) {
+		return maaVakilukuRepository.findById(maaVakilukuId);
+	}
+	
+	// RESTful service Haetaan yhden maan paastot tiedot nimen perusteella
+	@RequestMapping(value = "/nimi/{paastonimi}", method = RequestMethod.GET)
+	public @ResponseBody List<Paasto> findPaastoRest(@PathVariable("paastonimi") String paastonimi) {
+		return paastoRepository.findByPaastonimi(paastonimi);
+	}
+	
+	// RESTful service Haetaan kaikki maat ja paastot
+	@RequestMapping(value = "/kaikkimaatjapaastot", method = RequestMethod.GET)
+	public @ResponseBody List<Paasto> PaastoListRest() {
+		return (List<Paasto>) paastoRepository.findAll();
+	}
+	
+	// RESTful service Haetaan id:n perusteella maa ja paastot
+	@RequestMapping(value = "/kaikkimaatjapaastot/{id}", method = RequestMethod.GET)
+	public @ResponseBody Optional<Paasto> findPaastoRest(@PathVariable("id") Long paastoId) {
+		return paastoRepository.findById(paastoId);
+	}
+	
+	// RESTful service Haetaan listalle haettujen maiden paastot ja vakiluvut
+	@RequestMapping(value = "/maapaastot", method = RequestMethod.GET)
+	public @ResponseBody List<Maa> MaaListRest() {
+		return (List<Maa>) maaRepository.findAll();
+		}
+		
+	// RESTful service Haetaan id:n perusteella listalle haetun maan paastot ja vakiluku
+	@RequestMapping(value = "/maapaastot/{id}", method = RequestMethod.GET)
+	public @ResponseBody Optional<Maa> findMaaRest(@PathVariable("id") Long maaId) {
+		return maaRepository.findById(maaId);
+		}
+		
+	
 
 }
  
